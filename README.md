@@ -1,5 +1,12 @@
 # docker
 
+##Docker remove all
+
+```bash
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
 Cú pháp Dockerfile
 ==================
 
@@ -99,6 +106,7 @@ Build một image từ Dockerfile
 
 ```bash
 docker build -t hello -f Dockerfile/Dockerfile.hello  .
+docker build -t levinhtin/ubuntu:latest .
 ```
 
 - `-t`: tên của images (docker images | grep hello)
@@ -108,6 +116,7 @@ Chạy/tạo một container từ image vừa build
 
 ```bash
 docker run --name hello -i -t hello
+docker run --name tinubu -i -t levinhtin/ubuntu:latest -d -p 80:80
 ```
 
 - `--name:` tên của container
