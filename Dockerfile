@@ -10,6 +10,7 @@ RUN \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y byobu curl git htop man unzip vim wget && \
+  apt-get install -y supervisor && \
   apt-get install -y nginx && \
   apt-get install -y openssh-server &&\
   chown -R www-data:www-data /var/lib/nginx && \
@@ -45,5 +46,5 @@ ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 # Define default command.
-CMD ["nginx"]
-#CMD ["/usr/bin/supervisord"]
+#CMD ["nginx"]
+CMD ["/usr/bin/supervisord"]
