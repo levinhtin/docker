@@ -6,8 +6,8 @@ RUN \
   DEBIAN_FRONTEND=noninteractive \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y build-essential && \
+  #apt-get -y upgrade && \
+  #apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y byobu curl git htop man unzip vim wget && \
   apt-get install -y supervisor && \
@@ -35,16 +35,13 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 VOLUME ["/var/cache/nginx", "/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
 # Define working directory.
-WORKDIR /root
+WORKDIR /
 
 # Expose ports.
-EXPOSE 22
-EXPOSE 80
-EXPOSE 443
+EXPOSE 22 80
 
 ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 # Define default command.
-#CMD ["nginx"]
 CMD ["/usr/bin/supervisord"]
