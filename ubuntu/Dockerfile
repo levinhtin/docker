@@ -3,20 +3,21 @@ FROM ubuntu:latest
 
 # Install Nginx.
 RUN \
-  DEBIAN_FRONTEND=noninteractive \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
+  #DEBIAN_FRONTEND=noninteractive \
+  #sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   #apt-get -y upgrade && \
   #apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop man unzip vim wget && \
-  apt-get install -y supervisor && \
-  apt-get install -y nginx && \
+  apt-get install -y byobu curl git htop man unzip vim wget nano && \
   apt-get install -y openssh-server &&\
-  chown -R www-data:www-data /var/lib/nginx && \
+  apt-get install -y supervisor && \
+  
+  apt-get install -y nginx && \
+  #chown -R www-data:www-data /var/lib/nginx && \
   echo "daemon off;" >> /etc/nginx/nginx.conf && \
   rm -rf /var/lib/apt/lists/* && \
-  mkdir /var/run/sshd && \
+  mkdir -p /var/run/sshd && \
   add-apt-repository -y ppa:nginx/stable
 
   #rm -rf /var/lib/apt/lists/* && \
