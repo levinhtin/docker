@@ -120,3 +120,8 @@ docker run --name tinubu -i -t levinhtin/ubuntu:latest -d -p 80:80
 ```
 
 - `--name:` tên của container
+
+exec
+```bash
+docker exec -it ubuntu_bash bash
+```
