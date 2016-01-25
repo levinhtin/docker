@@ -1,0 +1,11 @@
+docker pull microsoft/aspnet
+
+docker run --name aspnet -it -d -p 81:81 -v /<dir-asp-project>:/aspnet/<project-name> microsoft/aspnet
+
+docker exec -it aspnet bash
+
+cd aspnet/<project-name>
+
+dnu restore
+dnu build
+dnx web --server.urls http://localhost:81
