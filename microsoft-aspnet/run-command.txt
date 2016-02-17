@@ -8,4 +8,4 @@ cd aspnet/<project-name>
 
 dnu restore
 dnu build
-dnx web --server.urls http://localhost:81
+dnx web --server.urls http://0.0.0.0:81
